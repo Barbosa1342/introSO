@@ -128,7 +128,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="includes.hpp" />
+    <ClCompile Include="Interativa.cpp" />
+    <ClCompile Include="IO.cpp" />
+    <ClCompile Include="Lote.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Processamento.cpp" />
+    <ClCompile Include="Processo.cpp" />
+    <ClCompile Include="TempoReal.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Interativa.hpp" />
+    <ClInclude Include="IO.hpp" />
+    <ClInclude Include="Lote.hpp" />
+    <ClInclude Include="Processamento.hpp" />
+    <ClInclude Include="Processo.hpp" />
+    <ClInclude Include="TempoReal.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
