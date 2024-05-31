@@ -26,20 +26,25 @@ void Processo::setTempoExe(float tempoExe) {
 
 string Processo::getTipo() {
 
+	return this->tipo;
 }
 
 int Processo::getId() {
 
+	return this->id;
 }
 
 int Processo::getDado() {
 
+	return this->dados;
 }
 
 string Processo::getTexto() {
 
+	return this->texto;
 }
 
 float Processo::getTempoExe() {
 
+	return this->tempoExe;
 }
