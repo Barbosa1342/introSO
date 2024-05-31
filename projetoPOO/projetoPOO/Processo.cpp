@@ -13,15 +13,15 @@ void Processo::setId(int id) {
 }
 
 void Processo::setDados(int dados) {
-
+	this->dados = dados;
 }
 
 void Processo::setTexto(string texto) {
-
+	this->texto = texto;
 }
 
 void Processo::setTempoExe(float tempoExe) {
-
+	this->tempoExe = tempoExe;
 }
 
 string Processo::getTipo() {
