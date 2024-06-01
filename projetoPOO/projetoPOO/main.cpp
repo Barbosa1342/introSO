@@ -2,5 +2,5 @@
 #include "Processo.hpp"
 
 int main() {
-	cout << "testando se o gabriel sabe o minimo de c++" << endl;
+	cout << "Ensinando C++ para o Denis..." << endl;
 }
