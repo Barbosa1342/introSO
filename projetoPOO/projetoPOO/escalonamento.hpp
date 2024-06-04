@@ -6,13 +6,14 @@
 
 class Escalonamento {
 private:
-    float tempoExe;
+    float tempoMedioExe;
+    float tempoMedioEspera;
 public:
     Escalonamento();
     virtual vector<Processo> ordenaVetor(vector<Processo> processos) = 0;
     virtual void calculaTempo(vector<Processo> processos) = 0;
 
-    void setTempoExe(float tempoExe);
+    void setTempoExe(float tempoMedioExe);
     float getTempoExe();
 };
 

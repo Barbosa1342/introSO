@@ -62,8 +62,36 @@ vector<Processo> SJF::ordenaVetor(vector<Processo> processos) {
 void SJF::calculaTempo(vector<Processo> processos) {
     vector<Processo> vetorOrdenado = ordenaVetor(processos);
 
+    float tempoEsperaTotal = 0.0;
+    float tempoExecTotal = 0.0;
+
+    cout << endl;
+    for (int i = 0; i < vetorOrdenado.size(); i++) {
+        cout << vetorOrdenado[i].getTipo() << " Tempo: " << vetorOrdenado[i].getTempoExe() << endl;
+    }
+    cout << endl;
+
     int tamanho = vetorOrdenado.size();
     for (int i = 0; i < tamanho; i++) {
-        cout << vetorOrdenado[i].getTempoExe() << endl;
+        if (i != 0) {
+            tempoEsperaTotal += tempoExecTotal;
+
+            tempoExecTotal += vetorOrdenado[i].getTempoExe();
+        }
+        else if (i == 0) {
+            tempoEsperaTotal += 0;
+            tempoExecTotal += vetorOrdenado[i].getTempoExe();
+        }
+        cout << "Tempo de Espera: " << tempoEsperaTotal << endl;
+        cout << "Tempo de Execucao: " << tempoExecTotal << endl;
     }
+    float tempoTotal = tempoEsperaTotal + tempoExecTotal;
+
+    float tempoMedio = tempoTotal / tamanho;
+    float tempoEsperaMedio = tempoEsperaTotal / tamanho;
+
+    cout << endl;
+
+    cout << "Tempo de Espera Medio: " << tempoEsperaMedio << endl;
+    cout << "Tempo Medio Total: " << tempoMedio << endl;
 }

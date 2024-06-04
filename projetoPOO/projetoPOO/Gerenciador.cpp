@@ -17,7 +17,7 @@ string randomStr(int tamanho = 10) {
 
 	int tam = sizeof(alfanumericos) / sizeof(alfanumericos[0]);
 	for (int i = 0; i < tamanho; i++) {
-		temp += alfanumericos[randomInt(0, tam)];
+		temp += alfanumericos[randomInt(0, tam-1)];
 	}
 
 	return temp;
@@ -31,23 +31,23 @@ void Gerenciador::geraProcessos() {
 	int numeroRandom = randomInt(5, 10);
 
 	for (int i = 0; i < numeroRandom; i++) {
-		int classe = randomInt(1, 5);
+		int tipo = randomInt(1, 5);
 
 		Processo* temp{};
 
-		if (classe == 1) {
+		if (tipo == 1) {
 			temp = new Interativa;
 		}
-		else if (classe == 2) {
+		else if (tipo == 2) {
 			temp = new IO;
 		}
-		else if (classe == 3) {
+		else if (tipo == 3) {
 			temp = new Lote;
 		}
-		else if (classe == 4) {
+		else if (tipo == 4) {
 			temp = new Processamento;
 		}
-		else if (classe == 5) {
+		else if (tipo == 5) {
 			temp = new TempoReal;
 		}
 
@@ -62,7 +62,7 @@ void Gerenciador::geraProcessos() {
 
 void Gerenciador::calculaSjf() {
 	SJF escaSJF;
-	escaSJF.calculaTempo(processos);
+	escaSJF.calculaTempo(this->processos);
 }
 
 void Gerenciador::imprimeProcessos() {

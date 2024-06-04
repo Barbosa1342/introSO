@@ -8,6 +8,10 @@ int main() {
 	Gerenciador teste;
 
 	teste.geraProcessos();
-	teste.imprimeProcessos();	
+	teste.imprimeProcessos();
+
+	cout << endl;
+
+	teste.calculaSjf();
 }
 

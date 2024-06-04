@@ -3,10 +3,10 @@
 Escalonamento::Escalonamento() {
 }
 
-void Escalonamento::setTempoExe(float tempoExe) {
-    this->tempoExe = tempoExe;
+void Escalonamento::setTempoExe(float tempoMedioExe) {
+    this->tempoMedioExe = tempoMedioExe;
 }
 
 float Escalonamento::getTempoExe() {
-    return this->tempoExe;
+    return this->tempoMedioExe;
 }
