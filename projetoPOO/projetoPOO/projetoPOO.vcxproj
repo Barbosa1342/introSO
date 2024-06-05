@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Escalonamento.cpp" />
+    <ClCompile Include="FIFO.cpp" />
     <ClCompile Include="Gerenciador.cpp" />
     <ClCompile Include="includes.hpp" />
     <ClCompile Include="Interativa.cpp" />
@@ -141,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="escalonamento.hpp" />
+    <ClInclude Include="FIFO.hpp" />
     <ClInclude Include="gerenciador.hpp" />
     <ClInclude Include="Interativa.hpp" />
     <ClInclude Include="IO.hpp" />
