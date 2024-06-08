@@ -21,11 +21,13 @@ private:
 public:
 	Gerenciador();
 
-	void geraProcessos(int numProcessos);
+	void geraProcessos(int numProcessos = 0);
 	void calculaSjf();
 	void calculaFifo();
 	void imprimeProcessos();
-	void calculaTempoExe(Processo *processo);
+	void imprimeSjf();
+	void imprimeFifo();
+	void calculaTempoProc(Processo *processo);
 };
 
 #endif // !GERENCIADOR_HPP

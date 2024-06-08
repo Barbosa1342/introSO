@@ -20,8 +20,8 @@ void Processo::setTexto(string texto) {
 	this->texto = texto;
 }
 
-void Processo::setTempoExe(float tempoExe) {
-	this->tempoExe = tempoExe;
+void Processo::setTempoProc(float tempoProc) {
+	this->tempoProc = tempoProc;
 }
 
 string Processo::getTipo() {
@@ -40,6 +40,6 @@ string Processo::getTexto() {
 	return this->texto;
 }
 
-float Processo::getTempoExe() {
-	return this->tempoExe;
+float Processo::getTempoProc() {
+	return this->tempoProc;
 }

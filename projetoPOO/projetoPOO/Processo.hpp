@@ -9,7 +9,7 @@ private:
     int id;
     int dados;
     string texto;
-    float tempoExe;
+    float tempoProc;
 public:
     Processo();
 
@@ -17,13 +17,13 @@ public:
     void setId(int id);
     void setDados(int dados);
     void setTexto(string texto);
-    void setTempoExe(float tempoExe);
+    void setTempoProc(float tempoProc);
 
     string getTipo();
     int getId();
     int getDado();
     string getTexto();
-    float getTempoExe();
+    float getTempoProc();
 };
 
 

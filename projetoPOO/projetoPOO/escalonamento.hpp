@@ -13,8 +13,11 @@ public:
     virtual vector<Processo> ordenaVetor(vector<Processo> processos) = 0;
     virtual void calculaTempo(vector<Processo> processos) = 0;
 
-    void setTempoExe(float tempoMedioExe);
-    float getTempoExe();
+    void setTempoMedioExe(float tempoMedioExe);
+    float getTempoMedioExe();
+
+    void setTempoMedioEspera(float tempoMedioEspera);
+    float getTempoMedioEspera();
 };
 
 #endif

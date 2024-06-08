@@ -15,24 +15,24 @@ vector<Processo> merge(vector<Processo> processos, int inicio, int meio, int fim
     i2 = meio + 1;
 
     while (i1 <= meio && i2 <= fim) {
-        if (processos[i1].getTempoExe() <= processos[i2].getTempoExe()) {
-            temp[k++] = processos[i1++].getTempoExe();
+        if (processos[i1].getTempoProc() <= processos[i2].getTempoProc()) {
+            temp[k++] = processos[i1++].getTempoProc();
         }
         else {
-            temp[k++] = processos[i2++].getTempoExe();
+            temp[k++] = processos[i2++].getTempoProc();
         }
     }
 
     while (i1 <= meio) {
-        temp[k++] = processos[i1++].getTempoExe();
+        temp[k++] = processos[i1++].getTempoProc();
     }
 
     while (i2 <= fim) {
-        temp[k++] = processos[i2++].getTempoExe();
+        temp[k++] = processos[i2++].getTempoProc();
     }
 
     for (int i = inicio; i <= fim; i++) {
-        processos[i].setTempoExe(temp[i - inicio]);
+        processos[i].setTempoProc(temp[i - inicio]);
     }
 
     free(temp);
@@ -63,31 +63,34 @@ void SJF::calculaTempo(vector<Processo> processos) {
     vector<Processo> vetorOrdenado = ordenaVetor(processos);
 
     float tempoEsperaTotal = 0.0;
+    float tempoProcTotal = 0.0;
     float tempoExecTotal = 0.0;
 
+    int tamanho = vetorOrdenado.size();
+
     cout << endl;
-    for (int i = 0; i < vetorOrdenado.size(); i++) {
-        cout << vetorOrdenado[i].getTipo() << " Tempo: " << vetorOrdenado[i].getTempoExe() << endl;
+    for (int i = 0; i < tamanho; i++) {
+        cout << " Processo " << i + 1 << " Tipo: " << vetorOrdenado[i].getTipo() << " Tempo: " << vetorOrdenado[i].getTempoProc() << " ms" << endl;
     }
     cout << endl;
 
-    int tamanho = vetorOrdenado.size();
+    
     for (int i = 0; i < tamanho; i++) {
         if (i > 0) {
-            tempoEsperaTotal += tempoExecTotal;
+            tempoEsperaTotal += tempoProcTotal;
         }
-        tempoExecTotal += vetorOrdenado[i].getTempoExe();
+        tempoProcTotal += vetorOrdenado[i].getTempoProc();
 
-        cout << "Tempo de Espera: " << tempoEsperaTotal << endl;
-        cout << "Tempo de Execucao: " << tempoExecTotal << endl;
+        cout << "Tempo de Espera: " << tempoEsperaTotal << " ms" << endl;
+        cout << "Tempo de Processamento: " << tempoProcTotal << " ms" << endl;
     }
-    float tempoTotal = tempoEsperaTotal + tempoExecTotal;
+    tempoExecTotal = tempoEsperaTotal + tempoProcTotal;
 
-    float tempoMedio = tempoTotal / tamanho;
-    float tempoEsperaMedio = tempoEsperaTotal / tamanho;
+    this->setTempoMedioExe(tempoExecTotal / tamanho);
+    this->setTempoMedioEspera(tempoEsperaTotal / tamanho);
 
     cout << endl;
-
-    cout << "Tempo de Espera Medio: " << tempoEsperaMedio << endl;
-    cout << "Tempo Medio Total: " << tempoMedio << endl;
+    //cout << "Tempo de Espera Medio: " << this->getTempoMedioEspera() << " ms" << endl;
+    //cout << "Tempo de Execucao Medio: " << this->getTempoMedioExe() << " ms" << endl;
+    //cout << endl;
 }

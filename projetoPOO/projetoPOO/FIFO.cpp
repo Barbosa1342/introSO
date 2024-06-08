@@ -10,32 +10,34 @@ vector<Processo> FIFO::ordenaVetor(vector<Processo> processos) {
 
 void FIFO::calculaTempo(vector<Processo> processos) {
     float tempoEsperaTotal = 0.0f;
+    float tempoProcTotal = 0.0f;
     float tempoExecTotal = 0.0f;
-    float tempoTotal = 0.0f;
-    float tempoMedio = 0.0f;
-    float tempoMedioEspera = 0.0f;
 
     int tamanho = processos.size();
-    for (int i = 0; i < tamanho; i++) {
-        cout << processos[i].getTempoExe() << endl;
-    }
 
+    cout << endl;
+    for (int i = 0; i < tamanho; i++) {
+        cout << " Processo " << i + 1 << " Tipo: " << processos[i].getTipo() << " Tempo: " << processos[i].getTempoProc() << " ms" << endl;
+    }
     cout << endl;
 
     for (int i = 0; i < tamanho; i++) {
         if (i > 0) {
-            tempoEsperaTotal += tempoExecTotal;
+            tempoEsperaTotal += tempoProcTotal;
         }
-        tempoExecTotal += processos[i].getTempoExe();
+        tempoProcTotal += processos[i].getTempoProc();
 
-        cout << "Tempo de Espera: " << tempoEsperaTotal << endl;
-        cout << "Tempo de Execucao: " << tempoExecTotal << endl;
+        cout << "Tempo de Espera: " << tempoEsperaTotal << " ms" << endl;
+        cout << "Tempo de Execucao: " << tempoProcTotal << " ms" << endl;
     }
 
-    tempoTotal = tempoEsperaTotal + tempoExecTotal;
-    tempoMedio = tempoTotal / tamanho;
-    tempoMedioEspera = tempoEsperaTotal / tamanho;
+    tempoExecTotal = tempoEsperaTotal + tempoProcTotal;
 
-    cout << "Tempo total: " << tempoTotal << endl;
-    cout << "Tempo medio de espera : " << tempoMedioEspera << endl;
+    this->setTempoMedioExe(tempoExecTotal / tamanho);
+    this->setTempoMedioEspera(tempoEsperaTotal / tamanho);
+
+    cout << endl;
+    //cout << "Tempo de Espera Medio: " << this->getTempoMedioEspera() << " ms" << endl;
+    //cout << "Tempo de Execucao Medio: " << this->getTempoMedioExe() << " ms" << endl;
+    //cout << endl;
 }

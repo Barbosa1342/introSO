@@ -1,115 +1,136 @@
 #include "gerenciador.hpp"
 
+void encerramento() {
+	cout << endl;
+	cout << "Obrigado por utizar nossa maquina virtual." << endl;
+	cout << "Creditos: " << endl;
+	cout << "- Denis Magri" << endl << "- Gabriel Barbosa" << endl << endl;
+	cout << " -=- Fundacao Herminio Ometto -=- " << endl;
+}
 
-int main() {
+int menuEscalonamento(Gerenciador &gerenciador) {
+	int opcao = 0;
 
-	Gerenciador G1;
+	cout << "1 - Metodo SJF" << endl;
+	cout << "2 - Metodo FIFO" << endl;
+	cout << "3 - Sair" << endl;
+	cin >> opcao;
 
-	while (true) {
-		int opcao = 0;
+	system("cls");
 
-		cout << "	================================================" << endl;
-		cout << "	   Seja bem vindo a nossa Maquina virtual!!!" << endl;
-		cout << "	================================================" << endl;
+	if (opcao == 1) {
+		gerenciador.calculaSjf();
+		return 1;
+	}
+	else if (opcao == 2) {
+		gerenciador.calculaFifo();
+		return 2;
+	}
+	else if (opcao == 3) {
+		cout << "Nenhum Sistema foi escolhido!" << endl;
+		return 3;
+	}
+	else {
+		cout << "Opcao Invalida. Tente Novamente" << endl;
+		menuEscalonamento(gerenciador);
+	}
+}
 
-		cout << "--------------------------Menu--------------------------" << endl;
-		cout << "Insira a seguir o numero referente a opcao desejada" << endl;
+int menu(Gerenciador &gerenciador) {
+	int opcao = 0;
 
-		cout << "1 - Abrir Navegador" << endl;
-		cout << "2 - Abrir Discord" << endl;
-		cout << "3 - Abrir Visual studio" << endl;
-		cout << "4 - Outros Aplicativos" << endl;
-		cin >> opcao;
+	cout << "--------------------------Menu--------------------------" << endl;
+	cout << "Insira a seguir o numero referente a opcao desejada: " << endl;
+	cout << "1 - Abrir Navegador" << endl;
+	cout << "2 - Abrir Discord" << endl;
+	cout << "3 - Abrir Visual studio" << endl;
+	cout << "4 - Outros Aplicativos" << endl;
+	cout << "5 - Sair" << endl;
+	cin >> opcao;
 
+	if (opcao < 1 || opcao > 5) {
+		cout << "Opcao Invalida. Tente Novamente." << endl;
+		menu(gerenciador);
+	}
+	else {
 		if (opcao == 1) {
-			cout << "Gera vetor de tamanho 15" << endl;
-			G1.geraProcessos(15);
+			gerenciador.geraProcessos(15);
 		}
-		else if(opcao == 2) {
-			cout << "Gera vetor de tamanho 10" << endl;
-			G1.geraProcessos(10);
+		else if (opcao == 2) {
+			gerenciador.geraProcessos(10);
 		}
 		else if (opcao == 3) {
-			cout << "Gera vetor de tamanho 13" << endl;
-			G1.geraProcessos(13);
+			gerenciador.geraProcessos(13);
 		}
 		else if (opcao == 4) {
-			cout << "Gera vetor aleatorio" << endl;
-			G1.geraProcessos(0);
+			gerenciador.geraProcessos();
 		}
-		else {
-			cout << "Opcao invalida por favor verifique as op�oes e tente novamente" << endl;
-			main();
+		else if (opcao == 5) {
+			return NULL;
 		}
-		system("pause");
+		system("cls");
 
-		cout << "Selecione um sistema de escalonamento:" << endl;
-		cout << "1 - Metodo SJF" << endl;
-		cout << "2 - Metodo FIFO" << endl;
-		if (opcao == 1) {
-			G1.calculaSjf();
-		}
-		else if (opcao == 2) {
-			G1.calculaFifo();
-		}
-		else if (opcao == 3) {
-			main();
-		}
-		else {
-			cout<< "Opcao invalida por favor verifique as op�oes e tente novamente" << endl;
-			main();
+		cout << "Selecione o Sistema de Escalonamento: " << endl;
+		opcao = menuEscalonamento(gerenciador);
+
+		if (opcao == 3) {
+			return NULL;
 		}
 
-		cout << "Deseja testa outro sistema de escalonamento: " << endl;
-		cout << "1 - Metodo SJF" << endl;
-		cout << "2 - Metodo FIFO" << endl;
-		cout << "3 - retorna para o menu" << endl;
+		int temp = 0;
+		cout << "Testar outro Sistema de Escalonamento?" << endl;
+		cout << "1 - Sim" << endl;
+		cout << "2 - Nao" << endl;
+		cin >> temp;
+
+		
+
+		if (temp == 1) {
+			if (opcao == 1) {
+				gerenciador.calculaFifo();
+				gerenciador.imprimeFifo();
+			}
+			else if (opcao == 2) {
+				gerenciador.calculaSjf();
+				gerenciador.imprimeSjf();
+			}
+		}
 		if (opcao == 1) {
-			G1.calculaSjf();
+			gerenciador.imprimeSjf();
 		}
 		else if (opcao == 2) {
-			G1.calculaFifo();
-		}
-		else if (opcao == 3) {
-			main();
-		}
-		else {
-			cout << "Opcao invalida por favor verifique as op�oes e tente novamente" << endl;
-			main();
+			gerenciador.imprimeFifo();
 		}
 		
-		cout << "Teste efetuados com sucesso" << endl;
-		cout << "Selecione a opcao desejada: " << endl;
-		cout << "1 - Retornar ao menu" << endl;
-		cout << "2 - Finalizar maquina Virtual" << endl;
-		if (opcao == 1) {
-			system("cls");
-			main();
-		}
-		else if (opcao == 2) {
-			cout << "Obrigado por utizar nossa maquina virtual" << endl;
-			cout << "Autores: Denis Magri" << endl << "Gabriel Barbosa" << endl;
-			cout << "Fundacao Herminio Ometto" << endl;
-		}
+
+
 		system("pause");
-		return 0;
+		system("cls");
 	}
+	menu(gerenciador);
+}
+
+void intro() {
+	cout << "================================================" << endl;
+	cout << "	Seja bem vindo a Maquina Virtual!!!		" << endl;
+	cout << "================================================" << endl;
+	cout << endl;
+}
+
+int main() {
+	srand(time(NULL)); // evita a repeticao dos numeros pseudoaleatorios
+
+	Gerenciador gerenciador;
+
+	intro();
+	menu(gerenciador);
+
+	cout << "Teste Concluido com Sucesso" << endl;
+	encerramento();
+	return 0;
+}
 
 	/*
-	srand(time(NULL)); // evita a repeticao dos numeros pseudoaleatorios
 	cout << "Ensinando C++ para o Denis..." << endl;
-	
-	// sera decidido pelo usuario
-	int numProcessos = 10;
-
-	Gerenciador teste;
-
-	teste.geraProcessos(numProcessos);
-	teste.imprimeProcessos();
-
-	cout << endl;
-
-	teste.calculaFifo();
 	*/
-}
 
