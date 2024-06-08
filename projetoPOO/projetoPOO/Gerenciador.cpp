@@ -27,10 +27,8 @@ Gerenciador::Gerenciador() {
 
 }
 
-void Gerenciador::geraProcessos() {
-	int numeroRandom = randomInt(5, 10);
-
-	for (int i = 0; i < numeroRandom; i++) {
+void Gerenciador::geraProcessos(int numProcessos) {
+	for (int i = 0; i < numProcessos; i++) {
 		int tipo = randomInt(1, 5);
 
 		Processo* temp{};
@@ -53,7 +51,7 @@ void Gerenciador::geraProcessos() {
 
 		temp->setDados(randomInt());
 		temp->setId(i);
-		temp->setTexto(randomStr());
+		temp->setTexto(randomStr(randomInt(5, 10)));
 		calculaTempoExe(temp);
 
 		this->processos.push_back(*temp);
@@ -61,8 +59,11 @@ void Gerenciador::geraProcessos() {
 }
 
 void Gerenciador::calculaSjf() {
-	SJF escaSJF;
-	escaSJF.calculaTempo(this->processos);
+	this->sjf.calculaTempo(this->processos);
+}
+
+void Gerenciador::calculaFifo() {
+	this->fifo.calculaTempo(this->processos);
 }
 
 void Gerenciador::imprimeProcessos() {

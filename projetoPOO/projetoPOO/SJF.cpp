@@ -73,15 +73,11 @@ void SJF::calculaTempo(vector<Processo> processos) {
 
     int tamanho = vetorOrdenado.size();
     for (int i = 0; i < tamanho; i++) {
-        if (i != 0) {
+        if (i > 0) {
             tempoEsperaTotal += tempoExecTotal;
+        }
+        tempoExecTotal += vetorOrdenado[i].getTempoExe();
 
-            tempoExecTotal += vetorOrdenado[i].getTempoExe();
-        }
-        else if (i == 0) {
-            tempoEsperaTotal += 0;
-            tempoExecTotal += vetorOrdenado[i].getTempoExe();
-        }
         cout << "Tempo de Espera: " << tempoEsperaTotal << endl;
         cout << "Tempo de Execucao: " << tempoExecTotal << endl;
     }

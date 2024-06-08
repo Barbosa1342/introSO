@@ -9,6 +9,7 @@ private:
 
 public:
 	FIFO();
+	vector<Processo> ordenaVetor(vector<Processo> processos);
 	void calculaTempo(vector<Processo> processos);
 };
 

@@ -11,17 +11,19 @@
 #include "TempoReal.hpp"
 
 #include "sjf.hpp"
-
+#include "FIFO.hpp"
 
 class Gerenciador{
 private:
 	vector<Processo> processos;
 	SJF sjf;
+	FIFO fifo;
 public:
 	Gerenciador();
 
-	void geraProcessos();
+	void geraProcessos(int numProcessos);
 	void calculaSjf();
+	void calculaFifo();
 	void imprimeProcessos();
 	void calculaTempoExe(Processo *processo);
 };
