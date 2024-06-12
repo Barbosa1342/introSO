@@ -32,7 +32,9 @@ vector<Processo> merge(vector<Processo> processos, int inicio, int meio, int fim
     }
 
     for (int i = inicio; i <= fim; i++) {
-        processos[i].setTempoProc(temp[i - inicio]);
+        if (temp != NULL) {
+            processos[i].setTempoProc(temp[i - inicio]);
+        }
     }
 
     free(temp);

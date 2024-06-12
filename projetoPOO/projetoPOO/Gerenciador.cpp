@@ -50,10 +50,10 @@ void Gerenciador::geraProcessos(int numProcessos) {
 
 		// Inicializamos um ponteiro para um
 		// objeto do tipo Processo
-		Processo* temp{};
+		Processo* temp = NULL;
 
 		// Por trabalharmos com herança conseguimos instanciar
-		// um processo e atribuir uma classe filha a variavel
+		// um ponteiro de processo e converter para um ponteiro de classe derivada
 		if (tipo == 1) {
 			temp = new Interativa;
 		}
@@ -76,8 +76,17 @@ void Gerenciador::geraProcessos(int numProcessos) {
 		temp->setTexto(randomStr(randomInt(5, 10)));
 		calculaTempoProc(temp);
 
-		// adiciona ao vetor de processos
-		this->processos.push_back(*temp);
+		
+		if (temp != NULL) {
+			// adiciona ao vetor de processos
+			this->processos.push_back(*temp);
+			// libera memoria
+			free(temp); 
+		}
+		else {
+			cout << "Erro ao Gerar Processo. Valor Invalido.";
+		}
+		
 	}
 }
 
@@ -100,6 +109,8 @@ void Gerenciador::imprimeProcessos() {
 }
 
 void Gerenciador::imprimeSjf() {
+	// Acessa os atributos do objeto SJF
+	// Inacessiveis pela main
 	cout << "SJF: " << endl;
 
 	cout << "Tempo de Espera Medio: " << this->sjf.getTempoMedioEspera() << " ms" << endl;
@@ -107,6 +118,8 @@ void Gerenciador::imprimeSjf() {
 }
 
 void Gerenciador::imprimeFifo() {
+	// Acessa os atributos do objeto FIFO
+	// Inacessiveis pela main
 	cout << "FIFO: " << endl;
 
 	cout << "Tempo de Espera Medio: " << this->fifo.getTempoMedioEspera() << " ms" << endl;

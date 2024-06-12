@@ -4,7 +4,8 @@ void encerramento() {
 	cout << endl;
 	cout << "Obrigado por utizar nossa maquina virtual." << endl;
 	cout << "Creditos: " << endl;
-	cout << "- Denis Magri" << endl << "- Gabriel Barbosa" << endl << endl;
+	cout << "- Denis Magri GitHub: DenisMagri" << endl << "- Gabriel Barbosa GitHub: Barbosa1342" << endl << endl;
+	cout << "https://github.com/Barbosa1342/introSO" << endl;
 	cout << " -=- Fundacao Herminio Ometto -=- " << endl;
 }
 
