@@ -51,7 +51,6 @@ int menu(Gerenciador &gerenciador) {
 
 	if (opcao < 1 || opcao > 5) {
 		cout << "Opcao Invalida. Tente Novamente." << endl;
-		menu(gerenciador);
 	}
 	else {
 		if (opcao == 1) {
